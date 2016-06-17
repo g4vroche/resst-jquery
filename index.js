@@ -1,9 +1,6 @@
+var jQuery = require('jquery')
 
-module.exports = function(jQuery){
-
-    if (jQuery === undefined){
-        var jQuery = require('jquery');
-    }
+module.exports = {
 
     "handle": function(parameters){
         var params = parameters;
@@ -26,8 +23,6 @@ module.exports = function(jQuery){
             jQuery.ajax(params);
         });
     }
-
-    return this;
 };
 
 
