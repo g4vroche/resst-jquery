@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/g4vroche/resst-jquery/issues"
   },
-  "homepage": "https://github.com/g4vroche/resst-jquery#readme"
+  "homepage": "https://github.com/g4vroche/resst-jquery#readme",
+  "dependencies": {
+    "jquery": "^3.0.0"
+  }
 }
