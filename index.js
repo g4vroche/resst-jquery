@@ -1,5 +1,9 @@
 
-module.exports = {
+module.exports = function(jQuery){
+
+    if (jQuery === undefined){
+        var jQuery = require('jquery');
+    }
 
     "handle": function(parameters){
         var params = parameters;
@@ -19,9 +23,11 @@ module.exports = {
             };
 
 
-            request.ajax(params);
+            jQuery.ajax(params);
         });
     }
+
+    return this;
 };
 
 
