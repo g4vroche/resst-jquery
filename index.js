@@ -2,7 +2,7 @@ var jQuery = require('jquery')
 
 module.exports = {
 
-    "handle": function(parameters){
+    "handle": function(parameters, modifier){
         var params = parameters;
         params.type = parameters.method;
         params.cache = true;
@@ -12,13 +12,12 @@ module.exports = {
         return new Promise(function(resolve, reject){
 
             params.success = function(body, status, response){
-                resolve(formatResponse(response));
+                resolve(modifier(formatResponse(response)));
             };
 
             params.error = function(response){
-                reject(formatResponse(response));
+                reject(modifier(formatResponse(response)));
             };
-
 
             jQuery.ajax(params);
         });

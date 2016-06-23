@@ -1,6 +1,6 @@
 {
   "name": "resst-jquery",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Backend to use jquery with resst",
   "main": "index.js",
   "scripts": {
