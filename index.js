@@ -2,21 +2,22 @@ var jQuery = require('jquery')
 
 module.exports = {
 
-    "handle": function(parameters, modifier){
-        var params = parameters;
-        params.type = parameters.method;
-        params.cache = true;
-        params.url = parameters.uri;
-        params.data = params.body;
-
+    "handle": function(request, assigner){
+        var params = Object.assign({}, request, {
+            type: request.method,
+            cache: true,
+            url: request.uri,
+            data: request.body
+        });
+        
         return new Promise(function(resolve, reject){
 
             params.success = function(body, status, response){
-                resolve(modifier(formatResponse(response)));
+                resolve(assigner(formatResponse(response)));
             };
 
             params.error = function(response){
-                reject(modifier(formatResponse(response)));
+                reject(assigner(formatResponse(response)));
             };
 
             jQuery.ajax(params);
