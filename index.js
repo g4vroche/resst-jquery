@@ -17,7 +17,11 @@ module.exports = {
             };
 
             params.error = function(response){
-                reject(assigner(formatResponse(response)));
+                if (response.status >= 200 && response.status < 400){
+                    resolve(assigner(formatResponse(response)));
+                } else {
+                    reject(assigner(formatResponse(response)));    
+                }
             };
 
             jQuery.ajax(params);
