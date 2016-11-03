@@ -9,7 +9,11 @@ module.exports = {
             url: request.uri,
             data: request.body
         });
-        
+
+        if (request.credentials && request.credentials !== 'omit') {
+            params.xhrFields = { withCredentials: true };
+        }
+
         return new Promise(function(resolve, reject){
 
             params.success = function(body, status, response){
